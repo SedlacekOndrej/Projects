@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Basic WebShop</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1 th:replace ="~{fragments/header :: header}"></h1>
+    <div th:replace="~{fragments/moreOptionsNavBar :: moreOptionsNavBar}"></div>
+    <div th:replace="~{fragments/priceFilterBar :: priceFilterBar}"></div>
+    <table th:replace = "~{fragments/table :: table}"></table>
+  </body>
+</html>

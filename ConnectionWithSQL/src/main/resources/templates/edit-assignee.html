@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todo CRUD App</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<form th:action="@{'/' + *{id} + '/edit-assignee'}" method="post">
+    <h1>Edit todo</h1>
+    <label>Name:<input type="text" name="editedName" th:value="${assignee.name}"></label><br>
+    <input type="submit" value="Submit" class="submit">
+</form>
+<a th:href="@{/assignees}">Cancel</a>
+</body>
+</html>

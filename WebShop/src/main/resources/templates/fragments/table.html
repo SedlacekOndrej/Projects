@@ -1,0 +1,17 @@
+<link rel="stylesheet" th:href="@{/styles.css}" />
+<table xmlns:th = "http://www.thymeleaf.org/" th:fragment = "table">
+    <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity of stock</th>
+    </tr>
+    <tr th:each = "item, iter : ${list}" th:object = "${item}">
+        <td th:text="*{name}"></td>
+        <td th:text="*{type}"></td>
+        <td th:text="*{description}"></td>
+        <td class="price" th:text="*{#numbers.formatDecimal(price, 0, 'COMMA', 2, 'POINT') + ' Kč'}"></td>
+        <td th:text="*{quantityOfStock}"></td>
+    </tr>
+</table>

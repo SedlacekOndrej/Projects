@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>The Reddit</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+    <a th:if="${isUserLoggedIn == false}" href="/register" class="login">Register</a>
+    <a th:if="${isUserLoggedIn == true}" href="/submit" class="submit">Submit new post</a>
+    <a th:if="${isUserLoggedIn == false}" href="/login" class="login">Login</a>
+    <br><p th:if="${isUserLoggedIn == true}" th:text="'You are logged as: ' + ${loggedUsername}"></p>
+    <br><a th:if="${isUserLoggedIn == true}" href="/logout" class="logout">Logout</a>
+    <table class="table">
+        <thead><h1>Trending posts</h1></thead>
+        <tr th:each = "post, iter : ${posts}" th:object = "${post}">
+            <td th:text="*{score}"></td>
+            <td><a th:if="${isUserLoggedIn == true}" th:href="@{'/' + *{id} + '/increment'}">+</a></td>
+            <td><a th:if="${isUserLoggedIn == true}" th:href="@{'/' + *{id} + '/decrement'}">-</a></td>
+            <td><a th:text="*{title}" th:href="@{*{content}}"/></td>
+            <td th:text="*{created}"></td>
+            <td th:if="*{user} != null" th:text="'created by ' + *{user}"></td>
+            <td><a th:if="${isUserLoggedIn == true}" th:href="@{'/' + *{id} + '/delete'}">delete</a></td>
+        </tr>
+    </table>
+    <a th:unless="${allPosts.size < 1}" href="/?pageNo=0" class="paging">1</a>
+    <a th:unless="${allPosts.size < 11}" href="/?pageNo=1" class="paging">2</a>
+    <a th:unless="${allPosts.size < 21}" href="/?pageNo=2" class="paging">3</a>
+    <a th:unless="${allPosts.size < 31}" href="/?pageNo=3" class="paging">4</a>
+</body>
+</html>

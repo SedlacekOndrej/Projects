@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Todo CRUD App</title>
+  <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <meta charset="utf-8" />
+</head>
+<body>
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='/todo'">See todos</button><br><br>
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='/assignees'">List of assignees</button><br><br>
+    <h1>TODOS FOR THIS ASSIGNEE</h1>
+    <div th:if="${todoList.size()>0}" th:each="todo : ${todoList}" th:text="${todo}"></div>
+    <div th:if="${todoList.size()<=0}" th:text="'No todos assigned yet'"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>

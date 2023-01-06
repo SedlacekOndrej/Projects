@@ -1,0 +1,8 @@
+<link rel="stylesheet" th:href="@{/styles.css}" />
+<div xmlns:th = "http://www.thymeleaf.org/" th:fragment = "searchBar">
+    <p class="search">Search for:</p>
+    <form action="/search" method="post">
+    <input type="text" placeholder="...something like car" class="textInput" name="item" th:value="${query}">
+    <input type="submit" value="Search" class="searchButton">
+    </form>
+</div>

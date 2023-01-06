@@ -1,0 +1,10 @@
+<link rel="stylesheet" th:href="@{/styles.css}" />
+<div xmlns:th = "http://www.thymeleaf.org/" th:fragment = "priceFilterBar">
+    <p class="filterByPrice">Filter by price:</p>
+    <form action="/price-filter" method="post">
+        <input type="submit" value="Above" class="priceFilterButton" name="filterType">
+        <input type="submit" value="Below" class="priceFilterButton" name="filterType">
+        <input type="submit" value="Exactly" class="priceFilterButton" name="filterType">
+        <input type="number" placeholder="...e.g.: 300" class="numberInput" name="number" th:value="${number}">
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Todo CRUD App</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<form th:action="@{'/' + *{id} + '/edit'}" method="post">
+    <h1>Edit todo</h1>
+    <label for="editedTodo">Todo description</label>
+    <input type="text" name="title" id="editedTodo" th:value="${todo.title}"><br>
+    <label for="urgent">Urgent:</label>
+    <input type="checkbox" name="urgent" id="urgent" th:checked="${todo.isUrgent()}"><br>
+    <label for="done">Done:</label>
+    <input type="checkbox" name="done" id="done" th:checked="${todo.isDone()}"><br>
+    <label>Deadline<input type="date" name="dueDate"></label><br>
+    <label>Select assignee:<select name="assignee">
+    <option th:each="assignee : ${assignees}" th:value="${assignee.id}" th:text="${assignee.name}"></option>
+            </select>
+    </label><br>
+    <input type="submit" value="Submit" class="submit">
+</form>
+<a th:href="@{/}">Cancel</a>
+</body>
+</html>

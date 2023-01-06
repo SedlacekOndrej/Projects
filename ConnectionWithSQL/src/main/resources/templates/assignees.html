@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todo CRUD App</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta charset="utf-8" />
+</head>
+<body>
+<table class="table">
+    <thead><h1>ASSIGNEES:</h1></thead>
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='/todo'">See todos</button><br><br>
+    <button type="button" class="btn btn-warning" onclick="window.location.href='/add-assignee'">Add new assignee</button><br><br>
+    <tr th:if="${assignees.size() > 0}">
+        <th scope="col">ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">EMAIL</th>
+    </tr>
+    <tr th:each = "item, iter : ${assignees}" th:object = "${item}">
+        <td th:text="*{id}"></td>
+        <td><a th:href="@{'/' + *{id} + '/detail'}" th:text="*{name}"/></td>
+        <td th:text="*{email}"></td>
+        <td><a th:href="@{'/' + *{id} + '/delete-assignee'}" class="btn btn-danger">delete</a></td>
+        <td><a th:href="@{'/' + *{id} + '/edit-assignee'}" class="btn btn-primary">edit</a></td>
+    </tr>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
